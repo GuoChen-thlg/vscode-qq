@@ -1,5 +1,8 @@
 # VS Code QQ Extension Change Log
 
+## Version 1.4.3: 2024/08/03
+* 更新依赖库
+
 ## Version 1.4.1: 2021/10/9
 
 * [default-theme] 修复表情排列问题
