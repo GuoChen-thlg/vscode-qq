@@ -133,12 +133,12 @@ function openChatView(id: string) {
     });
 }
 
-function postC2CEvent(data: oicq.FriendNoticeEventData | oicq.PrivateMessageEventData | oicq.SyncMessageEventData) {
+function postC2CEvent(data: oicq.FriendNoticeEvent | oicq.PrivateMessageEvent | oicq.PrivateMessage) {
     const id = genContactId("u", data.user_id);
     webviewMap.get(id)?.webview.postMessage(data);
 }
 
-function postGroupEvent(data: oicq.GroupNoticeEventData | oicq.GroupMessageEventData) {
+function postGroupEvent(data: oicq.GroupNoticeEvent | oicq.GroupMessageEvent) {
     const id = genContactId("g", data.group_id);
     webviewMap.get(id)?.webview.postMessage(data);
 }

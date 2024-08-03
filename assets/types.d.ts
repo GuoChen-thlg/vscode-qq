@@ -1,6 +1,6 @@
 import * as oicq from "oicq";
-type MessageEventData = oicq.PrivateMessageEventData | oicq.GroupMessageEventData;
-type NoticeEventData = oicq.FriendNoticeEventData | oicq.GroupNoticeEventData;
+type MessageEventData = oicq.PrivateMessageEvent | oicq.GroupMessageEvent;
+type NoticeEventData = oicq.FriendNoticeEvent | oicq.GroupNoticeEvent;
 
 /**
  * webview类型参考
@@ -20,9 +20,9 @@ export interface Webview extends EventTarget {
     // 监听新系统通知事件
     on(type: "notice", listener: (data: CustomEvent<NoticeEventData>) => void): void;
 
-    callApi(command: keyof oicq.Client, params?: any[]): Promise<oicq.Ret<unknown>>;
+    callApi(command: keyof oicq.Client, params?: any[]): Promise<oicq.MessageRet>;
 
-    sendMsg(message: string | oicq.MessageElem | Iterable<oicq.MessageElem>, auto_escape?: boolean): Promise<oicq.Ret<{ message_id: string }>>;
+    sendMsg(message: string | oicq.MessageElem | Iterable<oicq.MessageElem>, auto_escape?: boolean): Promise<oicq.MessageRet>;
     sendPrivateMsg: oicq.Client["sendPrivateMsg"];
     sendGroupMsg: oicq.Client["sendGroupMsg"];
     deleteMsg: oicq.Client["deleteMsg"];
@@ -38,10 +38,10 @@ export interface Webview extends EventTarget {
     
     getStrangerInfo: oicq.Client["getStrangerInfo"];
     getGroupInfo: oicq.Client["getGroupInfo"];
-    getGroupMemberList(uin: number): Promise<oicq.Ret<oicq.MemberInfo[]>>;
+    getGroupMemberList(uin: number): Promise<oicq.MessageRet>;
     getGroupMemberInfo: oicq.Client["getGroupMemberInfo"];
     getForwardMsg: oicq.Client["getForwardMsg"];
-    getGroupNotice: oicq.Client["getGroupNotice"];
+    // getGroupNotice: oicq.Client["getGroupNotice"];
     getRoamingStamp: oicq.Client["getRoamingStamp"];
     getMsg: oicq.Client["getMsg"];
 
